@@ -1,0 +1,12 @@
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.deps.json
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.runtimeconfig.json
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.runtimeconfig.dev.json
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.dll
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.pdb
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.csprojAssemblyReference.cache
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.AssemblyInfoInputs.cache
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.AssemblyInfo.cs
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.csproj.CoreCompileInputs.cache
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.dll
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.pdb
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.genruntimeconfig.cache

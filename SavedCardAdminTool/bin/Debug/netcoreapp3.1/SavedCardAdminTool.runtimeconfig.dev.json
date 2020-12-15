@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/sara.fotros/.dotnet/store/|arch|/|tfm|",
+      "/Users/sara.fotros/.nuget/packages"
+    ]
+  }
+}
