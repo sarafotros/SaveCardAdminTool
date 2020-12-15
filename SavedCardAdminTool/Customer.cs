@@ -7,7 +7,7 @@ namespace SavedCardAdminTool
     {
         public Customer(string id, string fullName, string emailAddress)
         {
-            Id = id;
+            Id = Guid.NewGuid().ToString();
             FullName = fullName;
             EmailAddress = emailAddress;
             SaveCards = new List<Card>();

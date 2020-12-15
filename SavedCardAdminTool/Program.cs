@@ -106,24 +106,13 @@ namespace SavedCardAdminTool
             Console.WriteLine("Please enter your card details:\nCARD NUMBER:");
             var cardNumber = Console.ReadLine();
             
-            // while (!Int32.TryParse(cardNumber, out int valid))
-            // {
-            //     Console.WriteLine("INCORRECT CARD NUMBER\tTry again:");
-            //    cardNumber = Console.ReadLine();
-            // }
-            //
-            
-            if (Int32.TryParse(cardNumber, out int valid))
-            {
-                Console.WriteLine(valid);
-            }
-            else
+            while (!Int32.TryParse(cardNumber, out int valid))
             {
                 Console.WriteLine("INCORRECT CARD NUMBER\tTry again:");
-                cardNumber = Console.ReadLine();
+               cardNumber = Console.ReadLine();
             }
-           
-            // Int32.TryParse(cardNumber,out _);
+            
+          
             var lastFourDigit = LastFourDigit(cardNumber);
             Console.WriteLine("NAME ON CARD:");
             var namOnCard = Console.ReadLine();
@@ -131,9 +120,8 @@ namespace SavedCardAdminTool
             var expDate = Console.ReadLine();
             Console.WriteLine("CARD TYPE:   -VISA -MASTER -AMEX  -DEBIT");
             var cardType = Console.ReadLine();
+           
             
-            // var lastFourDigit = cardNumber.
-            // var card = new Card();
             return new Card("Visa", "2313", "12/24", customer.JoinDate.ToString(), customer.FullName);
         }
 
