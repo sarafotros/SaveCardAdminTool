@@ -4,7 +4,7 @@ namespace SavedCardAdminTool
 {
     public class Card
     {
-        public Card(string type, string lastFourDigit, string expiryDate,  string nameOnCard, string cardId )
+        public Card(string type, string lastFourDigit, string expiryDate,  string nameOnCard )
         {
             CardType = type;
             LastFourDigit = lastFourDigit;

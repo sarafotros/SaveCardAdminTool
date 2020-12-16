@@ -14,7 +14,7 @@ namespace SavedCardAdminTool
             Console.WriteLine(">>> Welcome to the Moonpig save card admin tool! <<<");
             var dateTimeNow = DateTime.Now;
             var format = "MMM ddd d HH:mm";
-            Console.WriteLine($"  ...:::     Today is  {dateTimeNow.ToString(format)}    :::...");
+            Console.WriteLine($"...:::    Today is  {dateTimeNow.ToString(format)}   :::...");
             
             var shouldExit = false;
             while (!shouldExit)
@@ -22,7 +22,8 @@ namespace SavedCardAdminTool
                 Console.WriteLine("-- Main Menu --");
                 Console.WriteLine("0 - Exit");
                 Console.WriteLine("1 - List of All Customer");
-                Console.WriteLine("2 - Join");
+                Console.WriteLine("2 - Remove a Customer");
+                Console.WriteLine("3 - Join");
                 Console.WriteLine("---------------");
                 Console.Write("Please pick an option: ");    
 
@@ -38,6 +39,11 @@ namespace SavedCardAdminTool
                         Console.WriteLine("=======================");
                         break;
                     case "2":
+                        Console.WriteLine("Remove a customer");
+                        CustomerRemove();
+                        Console.WriteLine("=======================");
+                        break;
+                    case "3":
                         Console.WriteLine("Join");
                         CustomerJoin();
                         Console.WriteLine("=======================");
@@ -51,6 +57,31 @@ namespace SavedCardAdminTool
             Console.WriteLine(">>> Thank you for using the Moonpig save card admin tool. Goodbye! <<<");
         }
 
+        private static void CustomerRemove()
+        {
+            Console.WriteLine("Please select the customer you want to remove from the following list:");
+            ShowListOfAllCustomers();
+            Console.WriteLine("Enter the customer FULL NAME you want to remove:");
+            var customerName = Console.ReadLine();
+            var match = _adminTool.AllCustomers
+                .FirstOrDefault(customer =>  customer.FullName.Contains(customerName));
+            while (match == null)
+            {
+                Console.WriteLine("Name does not match, try again");
+                customerName = Console.ReadLine();
+            }
+
+            RemoveCustomerFromList(customerName);
+        }
+
+        private static void RemoveCustomerFromList(string customerName)
+        {
+            var customer = _adminTool.AllCustomers.Single(x => x.FullName == customerName);
+            _adminTool.AllCustomers.Remove(customer);
+            Console.WriteLine($"{customerName} was successfully removed from the list");
+        }
+        
+
         private static void CustomerJoin()
         {
             Console.WriteLine("To join Moonpig AdminTool we need your details");
@@ -58,8 +89,7 @@ namespace SavedCardAdminTool
             var fullname = Console.ReadLine();
             Console.WriteLine("Your Email Address:");
             var email = Console.ReadLine();
-            var id = DateTime.Now.Year.ToString() + "3e3" ;
-            var newCustomer = new Customer(fullname,email,id);
+            var newCustomer = new Customer(fullname,email);
             _adminTool.AllCustomers.Add(newCustomer);
             Console.WriteLine("\n Welcome to SAVE CARD ADMIN TOOL ");
             Console.WriteLine($"{newCustomer.FullName} has joined at {newCustomer.JoinDate}");
@@ -94,13 +124,12 @@ namespace SavedCardAdminTool
 
         private static void CustomerAddCard(Customer customer)
         {
-            CustomerCreateCard(customer);
-            var card = new Card("Visa", "2313", "12/24", customer.JoinDate.ToString(), customer.FullName);
-           customer.SaveCard(card);
-           Console.WriteLine($"New Card added, last 4 digit {customer.SaveCards.Last().LastFourDigit}");
+            var card =  CustomerCreateCard(); 
+            customer.SaveCard(card);
+            Console.WriteLine($"New Card added, last 4 digit {customer.SaveCards.Last().LastFourDigit} , Name on card : {card.NameOnCard}");
         }
 
-        private static Card CustomerCreateCard(Customer customer)
+        private static Card CustomerCreateCard()
         {
             Console.WriteLine("+ Add New Card +");
             Console.WriteLine("Please enter your card details:\nCARD NUMBER:");
@@ -112,17 +141,32 @@ namespace SavedCardAdminTool
                cardNumber = Console.ReadLine();
             }
             
-          
             var lastFourDigit = LastFourDigit(cardNumber);
+            
             Console.WriteLine("NAME ON CARD:");
             var namOnCard = Console.ReadLine();
-            Console.WriteLine("EXPIRY DATE (MM/YY)");
-            var expDate = Console.ReadLine();
+            
+            Console.WriteLine("EXPIRY DATE: MONTH(MM)");
+            var expDateMonth = Console.ReadLine();
+            while (!Int32.TryParse(expDateMonth, out int valid))
+            {
+                Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
+                expDateMonth = Console.ReadLine();
+            }
+            
+            Console.WriteLine("EXPIRY DATE: YEAR(YY)");
+            var expDateYear = Console.ReadLine();
+            while (!Int32.TryParse(expDateYear, out int valid))
+            {
+                Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
+                expDateYear = Console.ReadLine();
+            }
+            
             Console.WriteLine("CARD TYPE:   -VISA -MASTER -AMEX  -DEBIT");
             var cardType = Console.ReadLine();
-           
+
             
-            return new Card("Visa", "2313", "12/24", customer.JoinDate.ToString(), customer.FullName);
+            return new Card(cardType, lastFourDigit, $"{expDateMonth}/{expDateYear}", namOnCard);
         }
 
         private static string LastFourDigit(string cardNumber)
@@ -136,7 +180,7 @@ namespace SavedCardAdminTool
         {
             foreach (var customer in _adminTool.AllCustomers)
             {
-                Console.WriteLine("- {0},Join Date: {1}", customer.FullName, customer.JoinDate);
+                Console.WriteLine("- {0} , Join Date: {1}", customer.FullName, customer.JoinDate);
             }
         }
     }

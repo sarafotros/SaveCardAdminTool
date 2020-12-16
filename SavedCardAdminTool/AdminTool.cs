@@ -8,13 +8,14 @@ namespace SavedCardAdminTool
         {
             AllCustomers = new List<Customer>()
             {
-                new Customer("2101", "Aaron Jackson", "Aaron_j@aol.com"),
-                new Customer("2102", "Nick Zack", "nick_za@aol.com"),
-                new Customer("2103", "Pete Kings", "kings_p@aol.com"),
+                new Customer( "Aaron Jackson", "Aaron_j@aol.com"),
+                new Customer( "Nick Zack", "nick_za@aol.com"),
+                new Customer( "Pete Kings", "kings_p@aol.com"),
+                new Customer( "test", "test_p@test.com"),
             };
         }
 
-        public List<Customer> AllCustomers { get; set; }
+        public List<Customer> AllCustomers { get;  }
 
         public string RegisterNewCustomer(Customer customer)
         {
