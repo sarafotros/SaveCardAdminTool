@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 
@@ -39,12 +40,10 @@ namespace SavedCardAdminTool
                         Console.WriteLine("=======================");
                         break;
                     case "2":
-                        Console.WriteLine("Remove a customer");
                         CustomerRemove();
                         Console.WriteLine("=======================");
                         break;
                     case "3":
-                        Console.WriteLine("Join");
                         CustomerJoin();
                         Console.WriteLine("=======================");
                         break;
@@ -63,15 +62,25 @@ namespace SavedCardAdminTool
             ShowListOfAllCustomers();
             Console.WriteLine("Enter the customer FULL NAME you want to remove:");
             var customerName = Console.ReadLine();
-            var match = _adminTool.AllCustomers
-                .FirstOrDefault(customer =>  customer.FullName.Contains(customerName));
+            var match = CustomerExist(customerName);
+            
             while (match == null)
             {
                 Console.WriteLine("Name does not match, try again");
                 customerName = Console.ReadLine();
+                match = CustomerExist(customerName);
             }
 
             RemoveCustomerFromList(customerName);
+        }
+
+        private static Customer CustomerExist(string customerName)
+        {
+           
+            var  match = _adminTool.AllCustomers
+                .FirstOrDefault(customer =>  customer.FullName.Contains(customerName));
+            return match;
+
         }
 
         private static void RemoveCustomerFromList(string customerName)
@@ -109,6 +118,7 @@ namespace SavedCardAdminTool
                     break;
                 case "2":
                     Console.WriteLine("|==> List of Card ");
+                    CustomerCardsList(customer);
                     break;
                 case "3":
                     Console.WriteLine("|==> Remove Card ");
@@ -119,6 +129,18 @@ namespace SavedCardAdminTool
                 default:
                     Console.WriteLine("Unknown option.\n");
                     break;
+            }
+        }
+
+        private static void CustomerCardsList(Customer customer)
+        {
+            if(customer.SaveCards.Count == 0)
+                Console.WriteLine("You don't have any saved card yet");
+            CustomerJoinedOptions(customer);
+            
+            foreach (var card in customer.SaveCards)
+            {
+                Console.WriteLine($"{customer.SaveCards.Count+1}) Name On Card : {card.NameOnCard} Last 4 digit : {card.LastFourDigit}");
             }
         }
 
@@ -135,7 +157,7 @@ namespace SavedCardAdminTool
             Console.WriteLine("Please enter your card details:\nCARD NUMBER:");
             var cardNumber = Console.ReadLine();
             
-            while (!Int32.TryParse(cardNumber, out int valid))
+            while (!Int64.TryParse(cardNumber, out long valid) || cardNumber.Length <4)
             {
                 Console.WriteLine("INCORRECT CARD NUMBER\tTry again:");
                cardNumber = Console.ReadLine();
@@ -148,7 +170,7 @@ namespace SavedCardAdminTool
             
             Console.WriteLine("EXPIRY DATE: MONTH(MM)");
             var expDateMonth = Console.ReadLine();
-            while (!Int32.TryParse(expDateMonth, out int valid))
+            while (!Int32.TryParse(expDateMonth, out int valid) || expDateMonth.Length < 2)
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateMonth = Console.ReadLine();
@@ -156,7 +178,7 @@ namespace SavedCardAdminTool
             
             Console.WriteLine("EXPIRY DATE: YEAR(YY)");
             var expDateYear = Console.ReadLine();
-            while (!Int32.TryParse(expDateYear, out int valid))
+            while (!Int32.TryParse(expDateYear, out int valid) || expDateYear.Length < 2 )
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateYear = Console.ReadLine();
@@ -171,6 +193,10 @@ namespace SavedCardAdminTool
 
         private static string LastFourDigit(string cardNumber)
         {
+            if (cardNumber.Length < 4)
+            {
+                Console.WriteLine("");
+            }
             var fourDigit = cardNumber.Substring(cardNumber.Length - 4);
             Console.WriteLine(fourDigit);
             return fourDigit;
