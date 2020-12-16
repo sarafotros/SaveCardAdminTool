@@ -151,9 +151,14 @@ namespace SavedCardAdminTool
             Console.WriteLine("Please select the card you want to delete: ");
             var deleteCardIndex = Console.ReadLine();
             int valid;
-            var indexToDelete = Int32.TryParse(deleteCardIndex, out valid);
+            Int32.TryParse(deleteCardIndex, out valid);
             valid = valid - 1;
-            customer.SaveCards.RemoveAt(valid);
+
+            var cardToDelet = customer.SaveCards[valid];
+            customer.RemoveCard(cardToDelet);
+            
+            // customer.SaveCards.RemoveAt(valid);
+            
             Console.WriteLine("number of your saved card : {0}", customer.SaveCards.Count);
             CustomerJoinedOptions(customer);
         }
@@ -165,6 +170,7 @@ namespace SavedCardAdminTool
                 Console.WriteLine("You don't have any saved card yet");
                 CustomerJoinedOptions(customer);  
             }
+            customer.PrintAllSaveCards();
             
             foreach (var card in customer.SaveCards)
             {
