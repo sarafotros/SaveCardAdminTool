@@ -102,14 +102,16 @@ namespace SavedCardAdminTool
             _adminTool.AllCustomers.Add(newCustomer);
             Console.WriteLine("\n Welcome to SAVE CARD ADMIN TOOL ");
             Console.WriteLine($"{newCustomer.FullName} has joined at {newCustomer.JoinDate}");
-            Console.WriteLine(" ________---------__________-----------________\n");
-            Console.WriteLine("Options: \n1- Add Card \n2- List of your Cards \n3- Remove Card \n4- Return to the Main Menu ");
+            
             CustomerJoinedOptions(newCustomer);
         }
 
         private static void CustomerJoinedOptions(Customer customer)
         {
+            Console.WriteLine(" ________---------__________-----------________\n");
+            Console.WriteLine("Options: \n1- Add Card \n2- List of your Cards \n3- Remove Card \n4- Return to the Main Menu ");
             var option = Console.ReadLine();
+            
             switch (option)
             {
                 case "1":
@@ -122,6 +124,7 @@ namespace SavedCardAdminTool
                     break;
                 case "3":
                     Console.WriteLine("|==> Remove Card ");
+                    RemoveCustomerCard(customer);
                     break;
                 case "4":
                     Console.WriteLine("<==| return ");
@@ -132,16 +135,44 @@ namespace SavedCardAdminTool
             }
         }
 
-        private static void CustomerCardsList(Customer customer)
+        private static void RemoveCustomerCard(Customer customer)
         {
-            if(customer.SaveCards.Count == 0)
+            if (customer.SaveCards.Count == 0)
+            {
                 Console.WriteLine("You don't have any saved card yet");
-            CustomerJoinedOptions(customer);
+                CustomerJoinedOptions(customer);  
+            }
             
             foreach (var card in customer.SaveCards)
             {
-                Console.WriteLine($"{customer.SaveCards.Count+1}) Name On Card : {card.NameOnCard} Last 4 digit : {card.LastFourDigit}");
+                var index = customer.SaveCards.FindIndex(x => x.Equals(card)) + 1;
+                Console.WriteLine($"{index}) Name On Card : {card.NameOnCard} Last 4 digit : {card.LastFourDigit}");
             }
+            Console.WriteLine("Please select the card you want to delete: ");
+            var deleteCardIndex = Console.ReadLine();
+            int valid;
+            var indexToDelete = Int32.TryParse(deleteCardIndex, out valid);
+            valid = valid - 1;
+            customer.SaveCards.RemoveAt(valid);
+            Console.WriteLine("number of your saved card : {0}", customer.SaveCards.Count);
+            CustomerJoinedOptions(customer);
+        }
+
+        private static void CustomerCardsList(Customer customer)
+        {
+            if (customer.SaveCards.Count == 0)
+            {
+                Console.WriteLine("You don't have any saved card yet");
+                CustomerJoinedOptions(customer);  
+            }
+            
+            foreach (var card in customer.SaveCards)
+            {
+                var index = customer.SaveCards.FindIndex(x => x.Equals(card)) + 1;
+                Console.WriteLine($"{index}) Name On Card : {card.NameOnCard} Last 4 digit : {card.LastFourDigit}");
+            }
+
+            CustomerJoinedOptions(customer);
         }
 
         private static void CustomerAddCard(Customer customer)
@@ -149,15 +180,16 @@ namespace SavedCardAdminTool
             var card =  CustomerCreateCard(); 
             customer.SaveCard(card);
             Console.WriteLine($"New Card added, last 4 digit {customer.SaveCards.Last().LastFourDigit} , Name on card : {card.NameOnCard}");
+            CustomerJoinedOptions(customer);
         }
 
         private static Card CustomerCreateCard()
         {
             Console.WriteLine("+ Add New Card +");
-            Console.WriteLine("Please enter your card details:\nCARD NUMBER:");
+            Console.WriteLine("Please enter your card details:\nCARD NUMBER: (16 DIGIT)");
             var cardNumber = Console.ReadLine();
             
-            while (!Int64.TryParse(cardNumber, out long valid) || cardNumber.Length <4)
+            while (cardNumber != null && (!Int64.TryParse(cardNumber, out long valid) || cardNumber.Length < 4 || cardNumber.Length !=16))
             {
                 Console.WriteLine("INCORRECT CARD NUMBER\tTry again:");
                cardNumber = Console.ReadLine();
@@ -170,7 +202,7 @@ namespace SavedCardAdminTool
             
             Console.WriteLine("EXPIRY DATE: MONTH(MM)");
             var expDateMonth = Console.ReadLine();
-            while (!Int32.TryParse(expDateMonth, out int valid) || expDateMonth.Length < 2)
+            while (expDateMonth != null && (!Int32.TryParse(expDateMonth, out int valid) || expDateMonth.Length < 2))
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateMonth = Console.ReadLine();
@@ -178,7 +210,7 @@ namespace SavedCardAdminTool
             
             Console.WriteLine("EXPIRY DATE: YEAR(YY)");
             var expDateYear = Console.ReadLine();
-            while (!Int32.TryParse(expDateYear, out int valid) || expDateYear.Length < 2 )
+            while (expDateYear != null && (!Int32.TryParse(expDateYear, out int valid) || expDateYear.Length < 2) )
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateYear = Console.ReadLine();
@@ -193,12 +225,7 @@ namespace SavedCardAdminTool
 
         private static string LastFourDigit(string cardNumber)
         {
-            if (cardNumber.Length < 4)
-            {
-                Console.WriteLine("");
-            }
             var fourDigit = cardNumber.Substring(cardNumber.Length - 4);
-            Console.WriteLine(fourDigit);
             return fourDigit;
         }
 
@@ -206,7 +233,8 @@ namespace SavedCardAdminTool
         {
             foreach (var customer in _adminTool.AllCustomers)
             {
-                Console.WriteLine("- {0} , Join Date: {1}", customer.FullName, customer.JoinDate);
+                var index = _adminTool.AllCustomers.FindIndex(x => x.Equals(customer)) + 1;
+                Console.WriteLine("{0}) {1} , Join Date: {2}",index, customer.FullName, customer.JoinDate);
             }
         }
     }
