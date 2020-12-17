@@ -1,3 +1,3 @@
 # SaveCardAdminTool
 
-![Alt text](/savedCard.drawio)
+![Alt text](/saved.svg)
