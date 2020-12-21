@@ -10,7 +10,7 @@ namespace SavedCardAdminTool
             {
                 new Customer( "Aaron Jackson", "Aaron_j@aol.com"),
                 new Customer( "Nick Zack", "nick_za@aol.com"),
-                new Customer( "Pete Kings", "kings_p@aol.com"),
+                new Customer( "Peter Kings", "kings_p@aol.com"),
                 new Customer( "test", "test_p@test.com"),
             };
         }

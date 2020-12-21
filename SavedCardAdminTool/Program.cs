@@ -58,20 +58,27 @@ namespace SavedCardAdminTool
 
         private static void CustomerRemove()
         {
-            Console.WriteLine("Please select the customer you want to remove from the following list:");
-            ShowListOfAllCustomers();
-            Console.WriteLine("Enter the customer FULL NAME you want to remove:");
-            var customerName = Console.ReadLine();
-            var match = CustomerExist(customerName);
-            
-            while (match == null)
+            try
             {
-                Console.WriteLine("Name does not match, try again");
-                customerName = Console.ReadLine();
-                match = CustomerExist(customerName);
-            }
+                Console.WriteLine("Please select the customer you want to remove from the following list:");
+                ShowListOfAllCustomers();
+                Console.WriteLine("Enter the customer FULL NAME you want to remove:");
+                var customerName = Console.ReadLine();
+                var match = CustomerExist(customerName);
+            
+                while (match == null)
+                {
+                    Console.WriteLine("Name does not match, try again");
+                    customerName = Console.ReadLine();
+                    match = CustomerExist(customerName);
+                }
 
-            RemoveCustomerFromList(customerName);
+                RemoveCustomerFromList(customerName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         private static Customer CustomerExist(string customerName)
@@ -111,6 +118,7 @@ namespace SavedCardAdminTool
             Console.WriteLine(" ________---------__________-----------________\n");
             Console.WriteLine("Options: \n1- Add Card \n2- List of your Cards \n3- Remove Card \n4- Return to the Main Menu ");
             var option = Console.ReadLine();
+            if (option == null) throw new ArgumentException(message: "not valid");
             
             switch (option)
             {
@@ -137,30 +145,40 @@ namespace SavedCardAdminTool
 
         private static void RemoveCustomerCard(Customer customer)
         {
-            if (customer.SaveCards.Count == 0)
+            try
             {
-                Console.WriteLine("You don't have any saved card yet");
-                CustomerJoinedOptions(customer);  
-            }
+                if (customer.SaveCards.Count == 0)
+                {
+                    Console.WriteLine("You don't have any saved card yet");
+                    CustomerJoinedOptions(customer);  
+                }
             
-            foreach (var card in customer.SaveCards)
-            {
-                var index = customer.SaveCards.FindIndex(x => x.Equals(card)) + 1;
-                Console.WriteLine($"{index}) Name On Card : {card.NameOnCard} Last 4 digit : {card.LastFourDigit}");
-            }
-            Console.WriteLine("Please select the card you want to delete: ");
-            var deleteCardIndex = Console.ReadLine();
-            int valid;
-            Int32.TryParse(deleteCardIndex, out valid);
-            valid = valid - 1;
+                foreach (var card in customer.SaveCards)
+                {
+                    var index = customer.SaveCards.FindIndex(x => x.Equals(card)) + 1;
+                    Console.WriteLine($"{index}) Name On Card : {card.NameOnCard} Last 4 digit : {card.LastFourDigit}");
+                }
+                Console.WriteLine("Please select the card you want to delete: ");
+                var deleteCardIndex = Console.ReadLine();
 
-            var cardToDelet = customer.SaveCards[valid];
-            customer.RemoveCard(cardToDelet);
+                int valid;
+                Int32.TryParse(deleteCardIndex, out valid);
+                valid = valid - 1;
+
+                var cardToDelet = customer.SaveCards[valid];
+                customer.RemoveCard(cardToDelet);
             
-            // customer.SaveCards.RemoveAt(valid);
+                // customer.SaveCards.RemoveAt(valid);
             
-            Console.WriteLine("number of your saved card : {0}", customer.SaveCards.Count);
-            CustomerJoinedOptions(customer);
+                Console.WriteLine("number of your saved card : {0}", customer.SaveCards.Count);
+                CustomerJoinedOptions(customer);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                CustomerJoinedOptions(customer); 
+            }
+           
         }
 
         private static void CustomerCardsList(Customer customer)
