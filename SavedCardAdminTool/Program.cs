@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace SavedCardAdminTool
 {
@@ -9,8 +10,14 @@ namespace SavedCardAdminTool
     {
         private static AdminTool _adminTool;
 
+        private static StripeAPI _stripeApi = new StripeAPI();
+
         public static void Main(string[] args)
         {
+            // _stripeApi.GetList().GetAwaiter().GetResult();
+            _stripeApi.CreateCard("4242424242424242", "12", "21", "424").GetAwaiter().GetResult();
+            
+            Console.WriteLine("||||||||||||||||||||||||||||||||||");
             _adminTool = new AdminTool();
             Console.WriteLine(">>> Welcome to the Moonpig save card admin tool! <<<");
             var dateTimeNow = DateTime.Now;
@@ -83,11 +90,9 @@ namespace SavedCardAdminTool
 
         private static Customer CustomerExist(string customerName)
         {
-           
             var  match = _adminTool.AllCustomers
                 .FirstOrDefault(customer =>  customer.FullName.Contains(customerName));
             return match;
-
         }
 
         private static void RemoveCustomerFromList(string customerName)
@@ -135,12 +140,22 @@ namespace SavedCardAdminTool
                     RemoveCustomerCard(customer);
                     break;
                 case "4":
+                    Console.WriteLine("|==> Remove Expired Cards");
+                    RemoveCustomerExpiredCards(customer);
+                    break;
+                case "5":
                     Console.WriteLine("<==| return ");
                     break;
                 default:
                     Console.WriteLine("Unknown option.\n");
                     break;
             }
+        }
+
+        private static void RemoveCustomerExpiredCards(Customer customer)
+        {
+            customer.RemoveExpiredCards();
+            CustomerCardsList(customer);
         }
 
         private static void RemoveCustomerCard(Customer customer)
@@ -242,9 +257,9 @@ namespace SavedCardAdminTool
             
             Console.WriteLine("CARD TYPE:   -VISA -MASTER -AMEX  -DEBIT");
             var cardType = Console.ReadLine();
-
+            var stripePayment = _stripeApi.CreateCard(cardNumber, expDateMonth, expDateYear, "424").GetAwaiter().GetResult();
+            return new Card(stripePayment.Card.Brand, stripePayment.Card.LastFour, $"{stripePayment.Card.ExpMonth}/{expDateYear}", namOnCard);
             
-            return new Card(cardType, lastFourDigit, $"{expDateMonth}/{expDateYear}", namOnCard);
         }
 
         private static string LastFourDigit(string cardNumber)

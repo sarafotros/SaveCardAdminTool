@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "RxkESaHIOLd1adLPXalY08D92pmagu8ITA+rRKHG8RSiP45DJsdvq26d11UZoCZHcZSzMcLsW7pfQ6i3FtWmCw==",
+  "dgSpecHash": "VAjwL46dBZKejwjAKJAdkDw4imgEWTmGNHaQN4egbiC9SDirIVpG6PZmqm0sX2oo4SCn1hOmFjzgAetHKVHWAg==",
   "success": true,
   "projectFilePath": "/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/SavedCardAdminTool.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/sara.fotros/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/microsoft.extensions.primitives/2.2.0/microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/microsoft.net.http.headers/2.2.0/microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/system.buffers/4.5.0/system.buffers.4.5.0.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/system.memory/4.5.1/system.memory.4.5.1.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.1/system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "/Users/sara.fotros/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

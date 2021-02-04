@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SavedCardAdminTool
 {
@@ -37,6 +38,21 @@ namespace SavedCardAdminTool
             {
                 card.PrintDetails();
             }
+        }
+
+        public List<Card> RemoveExpiredCards()
+        {
+            foreach (var card in SaveCards)
+            {
+                var ExpiryMonth = Int32.Parse(card.ExpiryDate.Split("/").First());
+                var ExpiryYear = Int32.Parse("20" + card.ExpiryDate.Split("/").Last());
+                var cardExpiryDate = new DateTime(ExpiryYear, ExpiryMonth,DateTime.DaysInMonth(ExpiryYear, ExpiryMonth));
+                if (cardExpiryDate < DateTime.Now.Date)
+                { 
+                    SaveCards.Remove(card);
+                }
+            }
+            return SaveCards;
         }
 
     }

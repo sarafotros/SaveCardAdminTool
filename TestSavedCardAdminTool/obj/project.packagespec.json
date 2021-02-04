@@ -1,0 +1,53 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/TestSavedCardAdminTool/TestSavedCardAdminTool.csproj",
+    "projectName": "TestSavedCardAdminTool",
+    "projectPath": "/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/TestSavedCardAdminTool/TestSavedCardAdminTool.csproj",
+    "outputPath": "/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/TestSavedCardAdminTool/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net48"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "net48": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "net48": {
+      "dependencies": {
+        "Microsoft.NET.Test.Sdk": {
+          "target": "Package",
+          "version": "[16.7.1, )"
+        },
+        "coverlet.collector": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[1.3.0, )"
+        },
+        "xunit": {
+          "target": "Package",
+          "version": "[2.4.1, )"
+        },
+        "xunit.runner.visualstudio": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.4.3, )"
+        }
+      },
+      "runtimeIdentifierGraphPath": "/Library/Frameworks/Mono.framework/Versions/6.12.0/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"
+    }
+  }
+}

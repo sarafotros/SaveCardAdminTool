@@ -10,3 +10,8 @@
 /Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.dll
 /Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.pdb
 /Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.genruntimeconfig.cache
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.csproj.CopyComplete
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.WebUtilities.dll
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/Users/sara.fotros/Development/code/cSharp/SavedCardAdminTool/SavedCardAdminTool/bin/Debug/netcoreapp3.1/Microsoft.Net.Http.Headers.dll
