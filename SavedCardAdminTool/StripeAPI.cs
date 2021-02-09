@@ -68,6 +68,13 @@ namespace SavedCardAdminTool
             var stripeMethod = JsonConvert.DeserializeObject<StripePaymentMethod>(await response.Content.ReadAsStringAsync());
             return stripeMethod;
         }
+
+        public StripePaymentMethod GetCard(string id)
+        {
+            var result = GetResponse(_stripe, $"https://api.stripe.com/v1/payment_methods/{id}");
+            return  JsonConvert.DeserializeObject<StripePaymentMethod>(result);
+        }
+        
     }
 
     public class StripePaymentMethod

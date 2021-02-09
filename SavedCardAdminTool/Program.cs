@@ -246,7 +246,7 @@ namespace SavedCardAdminTool
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateMonth = Console.ReadLine();
             }
-            
+            // needs handled exception (future date..)
             Console.WriteLine("EXPIRY DATE: YEAR(YY)");
             var expDateYear = Console.ReadLine();
             while (expDateYear != null && (!Int32.TryParse(expDateYear, out int valid) || expDateYear.Length < 2) )
@@ -254,12 +254,17 @@ namespace SavedCardAdminTool
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateYear = Console.ReadLine();
             }
+
+            Console.WriteLine("##################");
             
-            Console.WriteLine("CARD TYPE:   -VISA -MASTER -AMEX  -DEBIT");
-            var cardType = Console.ReadLine();
             var stripePayment = _stripeApi.CreateCard(cardNumber, expDateMonth, expDateYear, "424").GetAwaiter().GetResult();
-            return new Card(stripePayment.Card.Brand, stripePayment.Card.LastFour, $"{stripePayment.Card.ExpMonth}/{expDateYear}", namOnCard);
+            var stripeCard = new MyCard(stripePayment.Id);
+            Console.WriteLine($"stripe id:{stripeCard.CardId}");
+            var testCardGet = _stripeApi.GetCard(stripeCard.CardId);
+            Console.WriteLine($"last four digit:{testCardGet.Card.LastFour}");
+            Console.WriteLine($"card type: {testCardGet.Card.Brand}");
             
+            return new Card(stripePayment.Card.Brand, stripePayment.Card.LastFour, $"{stripePayment.Card.ExpMonth}/{expDateYear}", namOnCard);
         }
 
         private static string LastFourDigit(string cardNumber)
