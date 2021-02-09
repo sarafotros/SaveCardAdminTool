@@ -121,7 +121,7 @@ namespace SavedCardAdminTool
         private static void CustomerJoinedOptions(Customer customer)
         {
             Console.WriteLine(" ________---------__________-----------________\n");
-            Console.WriteLine("Options: \n1- Add Card \n2- List of your Cards \n3- Remove Card \n4- Return to the Main Menu ");
+            Console.WriteLine("Options: \n1- Add Card \n2- List of your Cards \n3- Remove Card \n4- Remove Expired Cards \n5- Return to the Main Menu ");
             var option = Console.ReadLine();
             if (option == null) throw new ArgumentException(message: "not valid");
             
@@ -264,7 +264,7 @@ namespace SavedCardAdminTool
             Console.WriteLine($"last four digit:{testCardGet.Card.LastFour}");
             Console.WriteLine($"card type: {testCardGet.Card.Brand}");
             
-            return new Card(stripePayment.Card.Brand, stripePayment.Card.LastFour, $"{stripePayment.Card.ExpMonth}/{expDateYear}", namOnCard);
+            return new Card(stripePayment.Card.Brand, stripePayment.Card.LastFour, $"{stripePayment.Card.ExpMonth}/{expDateYear}", namOnCard,stripePayment.Id);
         }
 
         private static string LastFourDigit(string cardNumber)

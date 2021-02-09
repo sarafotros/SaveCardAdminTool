@@ -44,9 +44,9 @@ namespace SavedCardAdminTool
         {
             foreach (var card in SaveCards)
             {
-                var ExpiryMonth = Int32.Parse(card.ExpiryDate.Split("/").First());
-                var ExpiryYear = Int32.Parse("20" + card.ExpiryDate.Split("/").Last());
-                var cardExpiryDate = new DateTime(ExpiryYear, ExpiryMonth,DateTime.DaysInMonth(ExpiryYear, ExpiryMonth));
+                var expiryMonth = Int32.Parse(card.ExpiryDate.Split("/").First());
+                var expiryYear = Int32.Parse("20" + card.ExpiryDate.Split("/").Last());
+                var cardExpiryDate = new DateTime(expiryYear, expiryMonth,DateTime.DaysInMonth(expiryYear, expiryMonth));
                 if (cardExpiryDate < DateTime.Now.Date)
                 { 
                     SaveCards.Remove(card);

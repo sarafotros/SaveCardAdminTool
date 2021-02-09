@@ -4,14 +4,14 @@ namespace SavedCardAdminTool
 {
     public class Card
     {
-        public Card(string type, string lastFourDigit, string expiryDate,  string nameOnCard )
+        public Card(string type, string lastFourDigit, string expiryDate,  string nameOnCard,string id )
         {
             CardType = type;
             LastFourDigit = lastFourDigit;
             ExpiryDate = expiryDate;
             NameOnCard = nameOnCard;
             DateAdded = DateTime.Now;
-            CardId = Guid.NewGuid().ToString();
+            CardId = id;
         }
 
         public string CardType { get; }

@@ -23,19 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0083c00a-7781-415e-8dcd-5f7b16bd66f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SavedCardAdminTool/MyCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SavedCardAdminTool/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SavedCardAdminTool/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SavedCardAdminTool/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SavedCardAdminTool/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/Card.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/StripeAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/StripeAPI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/bin/Debug/netcoreapp3.1/SavedCardAdminTool.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SavedCardAdminTool/obj/Debug/netcoreapp3.1/SavedCardAdminTool.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject1/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject1/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject1/obj/Debug/netcoreapp3.1/TestProject1.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject1/obj/Debug/netcoreapp3.1/TestProject1.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestProject1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TestProject1/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +47,9 @@
       <list>
         <option value="$PROJECT_DIR$/SavedCardAdminTool/MyCard.cs" />
         <option value="$PROJECT_DIR$/TestProject1/UnitTest1.cs" />
-        <option value="$PROJECT_DIR$/SavedCardAdminTool/Program.cs" />
         <option value="$PROJECT_DIR$/SavedCardAdminTool/StripeAPI.cs" />
+        <option value="$PROJECT_DIR$/SavedCardAdminTool/Card.cs" />
+        <option value="$PROJECT_DIR$/SavedCardAdminTool/Program.cs" />
       </list>
     </option>
   </component>
@@ -115,7 +110,7 @@
       <workItem from="1611052592118" duration="4602000" />
       <workItem from="1612193644917" duration="839000" />
       <workItem from="1612434515494" duration="12452000" />
-      <workItem from="1612873604172" duration="5034000" />
+      <workItem from="1612873604172" duration="7180000" />
     </task>
     <servers />
   </component>
@@ -140,33 +135,41 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1689" height="240" key="GridCell.Tab.0.bottom" timestamp="1612880581687">
-      <screen x="-224" y="-1057" width="1920" height="1057" />
+    <state width="1384" height="209" key="GridCell.Tab.0.bottom" timestamp="1612888205246">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
-    <state width="1689" height="240" key="GridCell.Tab.0.bottom/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612880581687" />
+    <state width="1689" height="387" key="GridCell.Tab.0.bottom/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612884398096" />
     <state width="1689" height="386" key="GridCell.Tab.0.bottom/0.23.1440.814/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612878788980" />
     <state width="1689" height="258" key="GridCell.Tab.0.bottom/0.23.1440.816/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612440066037" />
+    <state width="1384" height="209" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1612888205246" />
+    <state width="1384" height="302" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1612886795067" />
     <state width="1689" height="205" key="GridCell.Tab.0.bottom/0.23.1440.877/-224.-1057.1920.992@-224.-1057.1920.992" timestamp="1612452627307" />
-    <state width="1689" height="240" key="GridCell.Tab.0.center" timestamp="1612880581686">
-      <screen x="-224" y="-1057" width="1920" height="1057" />
+    <state width="1384" height="209" key="GridCell.Tab.0.center" timestamp="1612888205246">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
-    <state width="1689" height="240" key="GridCell.Tab.0.center/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612880581686" />
+    <state width="1689" height="387" key="GridCell.Tab.0.center/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612884398093" />
     <state width="1689" height="386" key="GridCell.Tab.0.center/0.23.1440.814/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612878788979" />
     <state width="1689" height="258" key="GridCell.Tab.0.center/0.23.1440.816/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612440066036" />
+    <state width="1384" height="209" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1612888205246" />
+    <state width="1384" height="302" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1612886795066" />
     <state width="1689" height="205" key="GridCell.Tab.0.center/0.23.1440.877/-224.-1057.1920.992@-224.-1057.1920.992" timestamp="1612452627304" />
-    <state width="1689" height="240" key="GridCell.Tab.0.left" timestamp="1612880581686">
-      <screen x="-224" y="-1057" width="1920" height="1057" />
+    <state width="1384" height="209" key="GridCell.Tab.0.left" timestamp="1612888205245">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
-    <state width="1689" height="240" key="GridCell.Tab.0.left/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612880581686" />
+    <state width="1689" height="387" key="GridCell.Tab.0.left/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612884398091" />
     <state width="1689" height="386" key="GridCell.Tab.0.left/0.23.1440.814/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612878788978" />
     <state width="1689" height="258" key="GridCell.Tab.0.left/0.23.1440.816/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612440066036" />
+    <state width="1384" height="209" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1612888205245" />
+    <state width="1384" height="302" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1612886795066" />
     <state width="1689" height="205" key="GridCell.Tab.0.left/0.23.1440.877/-224.-1057.1920.992@-224.-1057.1920.992" timestamp="1612452627302" />
-    <state width="1689" height="240" key="GridCell.Tab.0.right" timestamp="1612880581687">
-      <screen x="-224" y="-1057" width="1920" height="1057" />
+    <state width="1384" height="209" key="GridCell.Tab.0.right" timestamp="1612888205246">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
-    <state width="1689" height="240" key="GridCell.Tab.0.right/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612880581687" />
+    <state width="1689" height="387" key="GridCell.Tab.0.right/0.23.1440.812/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612884398095" />
     <state width="1689" height="386" key="GridCell.Tab.0.right/0.23.1440.814/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612878788980" />
     <state width="1689" height="258" key="GridCell.Tab.0.right/0.23.1440.816/-224.-1057.1920.1057@-224.-1057.1920.1057" timestamp="1612440066037" />
+    <state width="1384" height="209" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1612888205246" />
+    <state width="1384" height="302" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1612886795067" />
     <state width="1689" height="205" key="GridCell.Tab.0.right/0.23.1440.877/-224.-1057.1920.992@-224.-1057.1920.992" timestamp="1612452627306" />
     <state x="236" y="-864" key="Rider.ProjectTemplateDialog.Size" timestamp="1611055930371">
       <screen x="-224" y="-1080" width="1920" height="1080" />
