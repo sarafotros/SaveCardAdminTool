@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace SavedCardAdminTool
 {
@@ -176,14 +173,11 @@ namespace SavedCardAdminTool
                 Console.WriteLine("Please select the card you want to delete: ");
                 var deleteCardIndex = Console.ReadLine();
 
-                int valid;
-                Int32.TryParse(deleteCardIndex, out valid);
+                Int32.TryParse(deleteCardIndex, out var valid);
                 valid = valid - 1;
 
-                var cardToDelet = customer.SaveCards[valid];
-                customer.RemoveCard(cardToDelet);
-            
-                // customer.SaveCards.RemoveAt(valid);
+                var cardToDelete = customer.SaveCards[valid];
+                customer.RemoveCard(cardToDelete);
             
                 Console.WriteLine("number of your saved card : {0}", customer.SaveCards.Count);
                 CustomerJoinedOptions(customer);
@@ -241,15 +235,27 @@ namespace SavedCardAdminTool
             
             Console.WriteLine("EXPIRY DATE: MONTH(MM)");
             var expDateMonth = Console.ReadLine();
-            while (expDateMonth != null && (!Int32.TryParse(expDateMonth, out int valid) || expDateMonth.Length < 2))
+            var monthInt = Int32.TryParse(expDateMonth, out int month);
+            if (month > 13)
+            {
+                Console.WriteLine("INCORRECT DATE (01-12)\tTry again:");
+                expDateMonth = Console.ReadLine();
+            }
+            while (expDateMonth != null && (!monthInt || expDateMonth.Length < 2  ))
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateMonth = Console.ReadLine();
             }
-            // needs handled exception (future date..)
+            // needs handled exception (future date... using DateNow)
             Console.WriteLine("EXPIRY DATE: YEAR(YY)");
             var expDateYear = Console.ReadLine();
-            while (expDateYear != null && (!Int32.TryParse(expDateYear, out int valid) || expDateYear.Length < 2) )
+            var yearInt = Int32.TryParse(expDateYear, out int year);
+            if (year < 21)
+            {
+                Console.WriteLine("INCORRECT DATE (expired card cannot be added)\tTry again:");
+                expDateYear = Console.ReadLine();
+            }
+            while (expDateYear != null && (!yearInt || expDateYear.Length < 2 ) )
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateYear = Console.ReadLine();
