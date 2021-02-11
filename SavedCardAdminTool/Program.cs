@@ -228,7 +228,7 @@ namespace SavedCardAdminTool
                cardNumber = Console.ReadLine();
             }
             
-            var lastFourDigit = LastFourDigit(cardNumber);
+            // var lastFourDigit = LastFourDigit(cardNumber);
             
             Console.WriteLine("NAME ON CARD:");
             var namOnCard = Console.ReadLine();
@@ -236,25 +236,41 @@ namespace SavedCardAdminTool
             Console.WriteLine("EXPIRY DATE: MONTH(MM)");
             var expDateMonth = Console.ReadLine();
             var monthInt = Int32.TryParse(expDateMonth, out int month);
-            if (month > 13)
+            if (month >= 13)
             {
                 Console.WriteLine("INCORRECT DATE (01-12)\tTry again:");
                 expDateMonth = Console.ReadLine();
+                monthInt = Int32.TryParse(expDateMonth, out int expMonth);
+                month = expMonth;
             }
             while (expDateMonth != null && (!monthInt || expDateMonth.Length < 2  ))
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
                 expDateMonth = Console.ReadLine();
             }
-            // needs handled exception (future date... using DateNow)
+           
             Console.WriteLine("EXPIRY DATE: YEAR(YY)");
             var expDateYear = Console.ReadLine();
-            var yearInt = Int32.TryParse(expDateYear, out int year);
-            if (year < 21)
+
+            var yearInt = Int32.TryParse("20" + expDateYear, out int year);
+            
+            // var cardExpiryDate = new DateTime(year, month,DateTime.DaysInMonth(year, month));
+            //
+            // while (cardExpiryDate < DateTime.Now.Date)
+            // { 
+            //     Console.WriteLine("INCORRECT DATE (expired card cannot be added)\tTry again:");
+            //     expDateYear = Console.ReadLine();
+            //     yearInt =  Int32.TryParse("20" + expDateYear, out int expYear);
+            //     cardExpiryDate = new DateTime(expYear, month,DateTime.DaysInMonth(expYear, month));
+            // }
+
+            while (!IsValidDate(expDateMonth,expDateYear))
             {
                 Console.WriteLine("INCORRECT DATE (expired card cannot be added)\tTry again:");
                 expDateYear = Console.ReadLine();
+                IsValidDate(expDateMonth, expDateYear);
             }
+            
             while (expDateYear != null && (!yearInt || expDateYear.Length < 2 ) )
             {
                 Console.WriteLine("INCORRECT DATE FORMAT\tTry again:");
@@ -286,6 +302,15 @@ namespace SavedCardAdminTool
                 var index = _adminTool.AllCustomers.FindIndex(x => x.Equals(customer)) + 1;
                 Console.WriteLine("{0}) {1} , Join Date: {2}",index, customer.FullName, customer.JoinDate);
             }
+        }
+
+        private static bool IsValidDate(string expMonth, string expYear )
+        {
+            var expiryMonth = Int32.Parse(expMonth);
+            var expiryYear = Int32.Parse("20" + expYear);
+            // DateTime.TryParse(expMonth, )
+            var cardExpiryDate = new DateTime(expiryYear, expiryMonth,DateTime.DaysInMonth(expiryYear,expiryMonth));
+            return cardExpiryDate >= DateTime.Now.Date;
         }
     }
 }
